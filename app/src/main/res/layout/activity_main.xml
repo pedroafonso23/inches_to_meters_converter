@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="164dp"
+            android:padding="8dp"
+            android:src="@drawable/img_inches_to_meters" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Convert Inches to Meters!\nEasy and fast"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/edit_text_inches"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Inches"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/button_convert"
+            android:layout_width="126dp"
+            android:layout_height="68dp"
+            android:layout_margin="16dp"
+            android:text="Convert" />
+
+        <TextView
+            android:id="@+id/text_view_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="36dp"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
