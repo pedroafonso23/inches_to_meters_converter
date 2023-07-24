@@ -33,10 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupButtonConvertClickListener() {
         buttonConvert.setOnClickListener(v -> {
-            if (editTextInches.getText().toString().isEmpty()) {
+            String inchesText = editTextInches.getText().toString();
+
+            if (inchesText.isEmpty()) {
                 resetResultAndWarnUser();
             } else {
-                convertAndShowResult();
+                convertAndShowResult(inchesText);
             }
         });
     }
@@ -46,14 +48,13 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "Please, fill the Inches field", Toast.LENGTH_LONG).show();
     }
 
-    private void convertAndShowResult() {
-        double meters = convertToMeters();
+    private void convertAndShowResult(String inchesText) {
+        double meters = convertToMeters(inchesText);
         String metersWithTwoDecimals = formatDoubleToTwoDecimals(meters);
         displayResult(metersWithTwoDecimals);
     }
 
-    private double convertToMeters() {
-        String inchesText = editTextInches.getText().toString();
+    private double convertToMeters(String inchesText) {
         int inches = Integer.parseInt(inchesText);
 
         // conversion rate of inches to meters is 0.0254
