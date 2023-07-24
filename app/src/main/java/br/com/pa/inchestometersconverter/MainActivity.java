@@ -1,11 +1,14 @@
 package br.com.pa.inchestometersconverter;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
     EditText editTextInches;
@@ -17,22 +20,53 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findView();
-        double meters = convertToMeters(23);
-        displayResult(meters);
+
+        findViews();
+        setupButtonConvertClickListener();
     }
 
-    private void findView() {
+    private void findViews() {
         editTextInches = findViewById(R.id.edit_text_inches);
         buttonConvert = findViewById(R.id.button_convert);
         textViewResult = findViewById(R.id.text_view_result);
     }
 
-    private double convertToMeters(int inches) {
-        return 1.23;
+    private void setupButtonConvertClickListener() {
+        buttonConvert.setOnClickListener(v -> {
+            if (editTextInches.getText().toString().isEmpty()) {
+                resetResultAndWarnUser();
+            } else {
+                convertAndShowResult();
+            }
+        });
     }
 
-    private void displayResult(double meters) {
+    private void resetResultAndWarnUser() {
+        textViewResult.setText("");
+        Toast.makeText(MainActivity.this, "Please, fill the Inches field", Toast.LENGTH_LONG).show();
+    }
+
+    private void convertAndShowResult() {
+        double meters = convertToMeters();
+        String metersWithTwoDecimals = formatDoubleToTwoDecimals(meters);
+        displayResult(metersWithTwoDecimals);
+    }
+
+    private double convertToMeters() {
+        String inchesText = editTextInches.getText().toString();
+        int inches = Integer.parseInt(inchesText);
+
+        // conversion rate of inches to meters is 0.0254
+        return inches * 0.0254;
+    }
+
+    private String formatDoubleToTwoDecimals(double meters) {
+        DecimalFormat decimalFormatter = new DecimalFormat("0.00");
+
+        return decimalFormatter.format(meters);
+    }
+
+    private void displayResult(String meters) {
         textViewResult.setText("Result:\n" + meters + " meters");
     }
 }

@@ -3,7 +3,19 @@
   <component name="ChatGPTCopilotChannelManager">
     <chatChannels>
       <chatChannel>
-        <option name="messages" />
+        <option name="model" value="gpt-3.5-turbo" />
+        <option name="messages">
+          <Message>
+            <option name="content" value="How to convert inches to meters?" />
+            <option name="id" value="101c41c7-434f-443c-abd9-fa3aa4359ac4" />
+            <option name="role" value="user" />
+          </Message>
+          <Message>
+            <option name="content" value="To convert inches to meters, you can use the conversion factor of 0.0254 meters per inch. &#10;&#10;Multiply the number of inches you have by 0.0254 to get the equivalent measurement in meters. &#10;&#10;For example, if you have 10 inches:&#10;&#10;10 inches * 0.0254 meters/inch = 0.254 meters&#10;&#10;So, 10 inches is equal to 0.254 meters." />
+            <option name="id" value="bbb89296-d650-4592-b0d0-1c4e276a5439" />
+            <option name="role" value="assistant" />
+          </Message>
+        </option>
       </chatChannel>
     </chatChannels>
   </component>
