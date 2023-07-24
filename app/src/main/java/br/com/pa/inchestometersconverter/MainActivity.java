@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             if (inchesText.isEmpty()) {
                 resetResultAndWarnUser();
             } else {
-                convertAndShowResult(inchesText);
+                convertAndDisplayResult(inchesText);
             }
         });
     }
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "Please, fill the Inches field", Toast.LENGTH_LONG).show();
     }
 
-    private void convertAndShowResult(String inchesText) {
+    private void convertAndDisplayResult(String inchesText) {
         double meters = convertToMeters(inchesText);
         String metersWithTwoDecimals = formatDoubleToTwoDecimals(meters);
         displayResult(metersWithTwoDecimals);
